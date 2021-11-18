@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+  <meta name="generator" content="Hugo 0.82.0">
+  <title>비대면 교육 플랫폼 </title>
+
+  <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/carousel/">
+
+
+
+  <!-- Bootstrap core CSS -->
+  <link href="../static/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
+    }
+
+    @media (min-width: 768px) {
+      .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+      }
+    }
+  </style>
+  <!-- Custom styles for this template -->
+  <link href="../static/dist/css/carousel.css" rel="stylesheet">
+</head>
+
+<body>
+  <a href="/home">
+    <h1>홈으로</h1>
+  </a>
+
+  <table class="table table-striped table-hover">
+    <thead>
+      <tr>
+        <th scope="col">번호</th>
+        <th scope="col">제목</th>
+        <th scope="col">이름</th>
+        <th scope="col">날짜</th>
+        <th scope="col">조회수</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% if rows!= none %}
+      {% for row in rows %}
+      <tr>
+        <td>{{loop.index}}</td>
+        <td><a href="{{ url_for('senior_school.article_page',title= row[2], context = row[3]) }}"> {{row[2]}}</a></td>
+        <td>{{row[1]}}</td>
+        <td>{{row[4]}}</td>
+        <td>{{row[4]}}</td>
+      </tr>
+      {% endfor %}
+      {% else %}
+      <h3>데이터가 존재하지 않습니다.</h3>
+      {% endif %}
+    </tbody>
+  </table>
+  <a href="{{ url_for('senior_school.write_article') }}" class="btn btn-primary">질문 등록하기</a>
+</body>
+
+</html>
