@@ -1,0 +1,78 @@
+body {
+    margin: 0;
+    padding: 0;
+  }
+  
+  .container{
+    background: #F6F6F6;
+  }
+  
+  .header{               /*title */
+    background: #CC0000;
+    height: 140px;
+  }
+  
+  h1{
+    color: white;
+    font-size: 80px;
+    text-align: center;
+    padding: 30px 180px 10px 168px;
+    font-family: Mukta Vaani;
+  }
+  
+  .introducing{               /*for Maharaja mac */
+    font-size:25px;
+    text-align: center;
+    font-family:  serif;
+    font-weight: bold;
+    word-spacing: 4px;
+    padding-top: 5px;
+  }
+  
+  .socialBurger{
+    font-size: 20px;
+    font-family: serif;
+    text-align: center;
+  }
+  
+  .subHeading {
+    color: white;
+    background-color: #CC0000;
+    text-align: center;
+    text-transform: uppercase;
+    word-spacing: 2.5px;
+    letter-spacing: 1px;
+  }
+  
+  .tryNew{
+    background: #292929;
+    color: white;
+  }
+  .contact {
+    text-align: center;
+    color: black;
+    font-size: 17px;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  
+  td{
+    font-size: 17px;
+    letter-spacing: 0.5px;
+  }
+  
+  th{
+    font-size: 18px;
+    word-spacing: 2.5px;
+  }
+  
+  .additional{
+    font-size: 15px;
+  }
+  
+  .lovingIt{
+    padding: 17px 10px;
+  }
+  
+  
+  
