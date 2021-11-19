@@ -1,4 +1,4 @@
-CREATE database itschool4senior;
+CREATE database school;
 
 CREATE TABLE IF NOT EXISTS `user_info`(
     id INT(11) NOT NULL AUTO_INCREMENT,

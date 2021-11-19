@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <a href="/home"><h1>홈으로</h1></a>
+    <a href="/bullet"><h1>게시판으로</h1></a>
+
+    <h1>제목</h1>
+    {{title}}<br>
+    <h2>내용</h2>
+    <div>{{row}} <br> </div>
+      
+      <form action="/delete_article" method="GET">
+       <input type="text" name="{{ title }}" style="display: none;" /><br><br>
+        
+        <input type="submit" value="업로드" /><br>
+    </form>
+</body>
+</html>
