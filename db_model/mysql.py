@@ -2,7 +2,7 @@ from sqlalchemy import create_engine,text
 
 db = {
     'user' : 'root',
-    'passwd':'',
+    'passwd':'qwe123',
     'database' : 'school',
     'charset' : 'utf8',
     'host' : 'localhost' ,
@@ -13,7 +13,7 @@ db_url=f"mysql+mysqlconnector://{db['user']}:{db['passwd']}@{db['host']}:{db['po
 
 
 def conn_mysqldb():
-    db_conn= create_engine(db_url,charset='utf8', encoding='utf-8',max_overflow=0)
+    db_conn= create_engine(db_url, encoding='utf-8',max_overflow=0)
     db_conn.connect()
     return db_conn
 

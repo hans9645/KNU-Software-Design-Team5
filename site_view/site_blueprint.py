@@ -108,7 +108,7 @@ def posting():
 def set_register():
     en_password=bcrypt.hashpw(request.form['password'].encode('UTF-8'),bcrypt.gensalt()) #암호화
     #VARCHAR 에 맞게 decode해서 문자열로 변환
-    #en_password = en_password.decode('UTF-8')
+    en_password = en_password.decode('UTF-8')
     user=User.create(request.form['user_id'],en_password,request.form['user_name'])
     print(en_password)
     if(user == None):
@@ -127,18 +127,18 @@ def login():
         user_id=request.form['user_id']
         password=request.form['password']
 
-    try:
-        # ID/PW 조회Query 실행
-        user = User.find(user_id)
+        try:
+            # ID/PW 조회Query 실행
+            user = User.find(user_id)
 
-        if user.user_id == user_id and bcrypt.checkpw(password.encode('utf-8'),user.password):    #쿼리 데이터가 존재하면
-            login_user(user,remember=True, duration=datetime.timedelta(days=30))
-            #session['user_id'] = user_id    #user_id를 세션에 저장한다.
-            return redirect("/home")
-        else:
-            return '비밀번호가 맞지 않습니다', 400 #아이디는 맞는데 비번 틀릴때
-    except:
-        return "존재하지 않는 아이디입니다", 400  #테이블에 user_id 자체가 없을때   
+            if user.user_id == user_id and bcrypt.checkpw(password.encode('utf-8'),user.password.encode('utf-8')):    #쿼리 데이터가 존재하면
+                login_user(user,remember=True, duration=datetime.timedelta(days=30))
+                #session['user_id'] = user_id    #user_id를 세션에 저장한다.
+                return redirect("/home")
+            else:
+                return '비밀번호가 맞지 않습니다', 400 #아이디는 맞는데 비번 틀릴때
+        except:
+            return "존재하지 않는 아이디입니다", 400  #테이블에 user_id 자체가 없을때   
 
   
 @senior_school.route('/login_register')
