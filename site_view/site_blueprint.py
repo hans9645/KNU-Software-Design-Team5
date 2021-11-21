@@ -17,12 +17,12 @@ import jwt
 #login_user:서버단에서 세션 쿠키셋관련 임포트
 #current_user: 세션확인 할 때 사용
 #main코드에 app에 최초 before request함수를 정의해둬서 블루프린트로 정의된 라우팅으로 들어와도 자동으로 before requset가 실행됨.
-senior_school=Blueprint('senior_school',__name__)
+school=Blueprint('school',__name__)
 
 
 
 ########################################## 홈페이지 로그인 확인 후 렌더링 #############################
-@senior_school.route('/home')
+@school.route('/home')
 def home():
     '''
     #로그인 세션정보가 없을 경우
@@ -36,49 +36,49 @@ def home():
     #세션확인 후 구독이력 확인
     if current_user.is_authenticated:
         rows = Article.get_home_board()
-        return render_template('main.html',rows=rows)
+        return render_template('index.html',rows=rows)
         #return render_template("home.html",user_id=current_user.user_id)#여기에 jinja2에 들어갈 변수를 같이 넣어준다.
     else:
         rows = Article.get_home_board()
-        return render_template('main.html', rows=rows)
+        return render_template('index.html', rows=rows)
    
 # <---  로그인 확인 후 로그인 하지않았다면 로그인 페이지, 벌써 로그인 중이라면 홈 요청 및 로그인 아이디도 같이 넘겨줌  --->
 
 
 #########it 기술##########
-@senior_school.route('/tech_description/')
+@school.route('/tech_description/')
 def tech():
     return render_template("it_tech.html")
 
-@senior_school.route('/wifi_tech/')
+@school.route('/wifi_tech/')
 def wifi():
     return render_template("wifi_desc.html")
 
-@senior_school.route('/bluetooth_tech/')
+@school.route('/bluetooth_tech/')
 def bluetooth_tech():
     return render_template("bluetooth_desc.html")
 
 
 #######################################  게시판 관련 라우팅 #####################################
 
-@senior_school.route('/bullet/')
+@school.route('/bullet/')
 def bullet():
     #page = request.args.get('page', type=int, default=1) 
     rows=Article.get_board()
     #rows=rows.paginate(page, per_page=10)
     return render_template("bulletBoard.html", rows=rows)
 
-@senior_school.route('/article_page/<title>/<context>')
+@school.route('/article_page/<title>/<context>')
 def article_page(title,context):
     return render_template("article.html",title=title, row=context)
 
 
-@senior_school.route('/write_article')
+@school.route('/write_article')
 def write_article():
     return render_template('write_article.html')
 
 
-@senior_school.route('/delete_article/<title>')
+@school.route('/delete_article/<title>')
 def delete_article_article(title):
     if current_user.is_authenticated :
         if Article.check_owe(current_user.user_id,title=title)==1:
@@ -89,7 +89,7 @@ def delete_article_article(title):
     else:
         return redirect('/login_register')
 
-@senior_school.route('/posting',methods=['POST'])
+@school.route('/posting',methods=['POST'])
 def posting():
     if current_user.is_authenticated:
         wuser_id=current_user.user_id
@@ -104,7 +104,7 @@ def posting():
 
 
 ###################################### 가입 및 로그인 라우팅 #######################################
-@senior_school.route('/set_register', methods=['POST'])
+@school.route('/set_register', methods=['POST'])
 def set_register():
     en_password=bcrypt.hashpw(request.form['password'].encode('UTF-8'),bcrypt.gensalt()) #암호화
     #VARCHAR 에 맞게 decode해서 문자열로 변환
@@ -119,8 +119,8 @@ def set_register():
     login_user(user,remember=True, duration=datetime.timedelta(days=30))
     return redirect('/home') 
 
-@senior_school.route('/set_login', methods=['GET','POST'])
-def login():
+@school.route('/set_login', methods=['GET','POST'])
+def set_login():
     if request.method == 'GET':
         return "wrong route",401
     else:
@@ -141,15 +141,20 @@ def login():
             return "존재하지 않는 아이디입니다", 400  #테이블에 user_id 자체가 없을때   
 
   
-@senior_school.route('/login_register')
-def login_register():
-    return render_template("login_register.html")
+@school.route('/register')
+def register():
+    return render_template("register.html")
+
+
+@school.route('/login')
+def login():
+    return render_template("login.html")
 
 
 ############################################################################
 
 ################################# 로그아웃 ####################################
-@senior_school.route('/logout')
+@school.route('/logout')
 def logout():
     logout_user() #어차피 라우팅 리퀘스트시 세션에 로그인 정보가 있다.
     return render_template("main.html")
@@ -157,14 +162,33 @@ def logout():
 ##########################################################################
 
 
-@senior_school.route('/macdonalds')
-def macdonalds():
-    return render_template('macdonalds.html')
+@school.route('/mypage')
+def mypage():
+    return render_template('mypage.html')
 
 
+################################# 숙제 관련 창 ####################################
+############## 향후 로그인 세션 유무를 통해 접근 통제해야함.
+@school.route('/hw_submit')
+def hw_submit():
+    return render_template('hw_submit.html')
+
+@school.route('/hw_register')
+def hw_register():
+    return render_template('hw_register.html')
+################################# 수강 생성 등록 관련 창 ####################################
+############## 향후 로그인 세션 유무를 통해 접근 통제해야함.
+@school.route('/subj_register')
+def subj_register():
+    return render_template('subj_register.html')
+
+@school.route('/subj_subscribe')
+def subj_subscribe():
+    return render_template('subj_subscribe.html')
+####################################################################################
 
 
-@senior_school.route('/fullstack')
+@school.route('/fullstack')
 def fullstack():    
     if current_user.is_authenticated:#세션확인 후 구독이력 확인
         web_page=BlogSession.get_blog_page(current_user.blog_id)#구독시 페이지정보  
@@ -178,14 +202,14 @@ def fullstack():
         return render_template(web_page)
 
 '''
-@senior_school.route('/logout')
+@school.route('/logout')
 def logout():
     User.delete(user_id=current_user.id)
     logout_user() #어차피 라우팅 리퀘스트시 세션에 로그인 정보가 있다.
     return redirect(url_for('blog_bp.fullstack'))
 
 
-@senior_school.route('/set_login',methods=['GET','POST'])
+@school.route('/set_login',methods=['GET','POST'])
 def set_email():
     if request.method=='GET':
         #print('http check',request.headers)
@@ -211,7 +235,7 @@ def set_email():
         return redirect('/blueprint/fullstack')
 '''
 
-@senior_school.route('/board_main',methods=['GET','POST'])
+@school.route('/board_main',methods=['GET','POST'])
 def board_main():
     print('site control에서 article_mgmt안에 게시판 관련된 클래스 선언 후(mysql과 연결) 관련 내용을 받아와서 일단 프린트 하도록 만들기.')
     #site control에서 article_mgmt안에 게시판 관련된 클래스 선언 후(mysql과 연결) 관련 내용을 받아와서 일단 프린트 하도록 만들기.
