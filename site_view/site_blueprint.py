@@ -87,7 +87,7 @@ def delete_article_article(title):
         else:
             return render_template('main.html'),401
     else:
-        return redirect('/login_register')
+        return redirect('/login')
 
 @school.route('/posting',methods=['POST'])
 def posting():
@@ -99,7 +99,7 @@ def posting():
         return redirect('/bullet')
     else:
         #flash("로그인 해주세요")
-        return redirect('/login_register')
+        return redirect('/login')
 
 
 
@@ -135,7 +135,7 @@ def set_login():
             if user.user_id == user_id and bcrypt.checkpw(password.encode('utf-8'),user.password.encode('utf-8')):    #쿼리 데이터가 존재하면
                 login_user(user,remember=True, duration=datetime.timedelta(days=30))
                 #session['user_id'] = user_id    #user_id를 세션에 저장한다.
-                return redirect("/home")
+                return redirect("/mypage")
             else:
                 return '비밀번호가 맞지 않습니다', 400 #아이디는 맞는데 비번 틀릴때
         except:
