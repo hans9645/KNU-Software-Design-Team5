@@ -108,8 +108,9 @@ def posting():
 def set_register():
     en_password=bcrypt.hashpw(request.form['password'].encode('UTF-8'),bcrypt.gensalt()) #암호화
     #VARCHAR 에 맞게 decode해서 문자열로 변환
-    en_password = en_password.decode('UTF-8')
-    user=User.create(request.form['user_id'],en_password,request.form['user_name'])
+    #en_password = en_password.decode('UTF-8')
+    user = User.create(request.form['user_id'], en_password,
+                       request.form['user_name'], request.form['belong'], request.form['tele'])
     print(en_password)
     if(user == None):
         return "같은 아이디가 존재합니다", 400

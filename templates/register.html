@@ -9,37 +9,28 @@
 <body>
   <form method="post" style="
     display: flex;
-    flex-direction: column;
-  ">
+    flex-direction: column;"id="register" action="/set_register">
     <label>
       <a>이메일</a>
-      <input type="email">
+      <input type="email" name="user_id" id="user_id">
     </label>
     <label>
       <a>비밀번호</a>
-      <input type="password">
-    </label>
-    <label>
-      <a>비밀번호 재확인</a>
-      <input type="password">
+      <input type="password" name="password" id="password">
     </label>
     <label>
       <a>이름</a>
-      <input type="text">
+      <input type="text" name="user_name" id="user_name">
     </label>
     <label>
-      <a>전화번호 (선택)</a>
-      <input type="tel">
+      <a>전화번호</a>
+      <input type="tel" name="tele" id="tel">
     </label>
     <label>
       <a>기관 명</a>
-      <input type="text">
+      <input type="text" name="belong" id="belong">
     </label>
-    <label>
-      <a>선생님의 경우에만 Check</a>
-      <input type="checkbox">
-    </label>
-    <input type="submit" value="가입하기">
+        <input type="submit" value="가입하기">
   </form>
 </body>
 </html>
