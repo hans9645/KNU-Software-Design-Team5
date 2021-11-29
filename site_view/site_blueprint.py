@@ -57,7 +57,15 @@ def wifi():
 @senior_school.route('/bluetooth_tech/')
 def bluetooth_tech():
     return render_template("bluetooth_desc.html")
+    #######################################  mypage 관련 라우팅 #####################################
 
+
+@senior_school.route('/mypage/')
+def mypage():
+    if current_user.is_authenticated:
+        return render_template("mypage.html")
+    else:
+        return render_template("login_register.html")
 
 #######################################  게시판 관련 라우팅 #####################################
 
