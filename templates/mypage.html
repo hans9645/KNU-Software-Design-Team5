@@ -1,33 +1,155 @@
 <!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+<html lang="ko">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>마이페이지</title>
 </head>
 
 <body>
-    <h1>My Page</h1>
-    <h2><a class="nav-link active" aria-current="page" href="/home">Home</a></h2>
-
-    {% if current_user.user_id != null %}
-    <h3 class="nav-link active">
-        {{current_user.user_id}}님 반갑습니다.
-    </h3>
-    <h3 class="nav-item">
-        <a class="nav-link active" href="/logout">Logout</a>
-    </h3>
-    {% else %}
-    <h3 class="nav-item">
-        <a class="nav-link active" href="/login_register">로그인/회원가입</a>
-    </h3>
-    {% endif %}
-
-
-
-    
+    <nav>
+        <h1>마이페이지</h1>
+        <h3 class="nav-link active">
+            kkk9645님 반갑습니다.
+        </h3>
+        <span class="spring"></span>
+        <h2>
+            <a class="nav-link active" aria-current="page" href="/home">홈</a>
+        </h2>
+        
+        <h2 class="nav-item">
+            <a class="nav-link active" href="/logout">로그아웃</a>
+        </h2>
+    </nav>
+    <div>
+        <section>
+            <div>
+                <img src="static/brand/user.png">
+                <div>
+                    <span>아이디</span>
+                    <span>kkk9645</span>
+                </div>
+            </div>
+            <div>
+                <img src="static/brand/padlock.png">
+                <div>
+                    <span>비밀번호</span>
+                    <span>qwe****</span>
+                </div>
+            </div>
+            <div>
+                <img src="static/brand/phone-call.png">
+                <div>
+                    <span>전화번호</span>
+                    <span>000-0000-0000</span>
+                </div>
+            </div>
+            <div>
+                <img src="static/brand/school.png">
+                <div>
+                    <span>소속</span>
+                    <span>메가스터디</span>
+                </div>
+            </div>
+            <div>
+                <img src="static/brand/clock.png">
+                <div>
+                    <span>가입 일</span>
+                    <span>2021년 11월 30일</span>
+                </div>
+            </div>
+        </section>
+    </div>
 </body>
 
+<style>
+    a {
+        text-decoration: none;
+        color: black;
+    }
+
+    body {
+        margin: 0;
+        padding: 0;
+        width: 100vw;
+        height: 100vh;
+        background: linear-gradient( rgba(255,255,255,0.8987744756105567) 0%, rgba(35,84,141,0.3) 100%);
+        background-repeat: no-repeat;
+        background-size: cover;
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+        align-items: stretch;
+    }
+
+    body > nav {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        background: #FFFFFF44;
+    }
+
+    body > nav > h1 {
+        font-size: 2rem;
+        color: #9dbbed;
+        font-weight: 700;
+    }
+
+    body > nav > .spring {
+        flex: 1;
+    }
+
+    body > nav > h1, h2, h3 {
+        margin: 1rem;
+    }
+
+    body > nav  a {
+        font-size: 1.5rem;
+        color: #6d9eedaa;
+        font-weight: 600;
+    }
+
+    body > nav  a:hover {
+        font-size: 1.7rem;
+        color: #6d9eed;
+        font-weight: 800;
+    }
+
+    body > div {
+        display: flex;
+        flex-direction: row;
+    }
+
+    section > div {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        margin: 3rem;
+    }
+
+    section > div > div {
+        display: flex;
+        flex-direction: column;
+        margin-left: 3rem;
+        align-items: center;
+        justify-content: center;
+    }
+
+    section > div > div > span:first-child {
+        font-size: 2rem;
+        color: #9dbbed;
+    }
+
+    section > div > div > span:last-child {
+        font-size: 1rem;
+        font-weight: 700;
+        margin: 1rem;
+    }
+
+    section > div > img {
+        width: 5rem;
+    }
+</style>
 </html>
