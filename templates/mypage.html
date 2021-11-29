@@ -10,53 +10,55 @@
 <body>
     <nav>
         <h1>마이페이지</h1>
+        {% if current_user.user_id != null %}
         <h3 class="nav-link active">
-            kkk9645님 반갑습니다.
+            {{current_user.user_name}}님 반갑습니다.
         </h3>
         <span class="spring"></span>
-        <h2>
-            <a class="nav-link active" aria-current="page" href="/home">홈</a>
-        </h2>
-        
-        <h2 class="nav-item">
+        <h3 class="nav-item">
             <a class="nav-link active" href="/logout">로그아웃</a>
-        </h2>
+        </h3>
+        {% else %}
+        <h3 class="nav-item">
+            <a class="nav-link active" href="/login_register">로그인/회원가입</a>
+        </h3>
+        {% endif %}
     </nav>
     <div>
         <section>
             <div>
-                <img src="static/brand/user.png">
+                <img src="../static/brand/mp_user.png">
                 <div>
                     <span>아이디</span>
-                    <span>kkk9645</span>
+                    <span>{{current_user.user_id}}</span>
                 </div>
             </div>
             <div>
-                <img src="static/brand/padlock.png">
+                <img src="../static/brand/mp_padlock.png">
                 <div>
                     <span>비밀번호</span>
-                    <span>qwe****</span>
+                    <span>{{current_user.password}}</span>
                 </div>
             </div>
             <div>
-                <img src="static/brand/phone-call.png">
+                <img src="../static/brand/mp_phone-call.png">
                 <div>
                     <span>전화번호</span>
-                    <span>000-0000-0000</span>
+                    <span>{{current_user.phone_number}}</span>
                 </div>
             </div>
             <div>
-                <img src="static/brand/school.png">
+                <img src="../static/brand/mp_school.png">
                 <div>
                     <span>소속</span>
-                    <span>메가스터디</span>
+                    <span>{{current_user.belong}}</span>
                 </div>
             </div>
             <div>
-                <img src="static/brand/clock.png">
+                <img src="../static/brand/mp_clock.png">
                 <div>
                     <span>가입 일</span>
-                    <span>2021년 11월 30일</span>
+                    <span>{{current_user.create_at}}</span>
                 </div>
             </div>
         </section>
