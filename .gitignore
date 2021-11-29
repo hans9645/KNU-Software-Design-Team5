@@ -1,8 +1,4 @@
-.cash
-
-D:\github_repository\KNU-Software-Design-Team5\db_model
-D:\github_repository\KNU-Software-Design-Team5\*\__pycache__
-D:\github_repository\KNU-Software-Design-Team5\db_model\__pycache__
 *.pyc
-*/mysql.py
-D:\github_repository\KNU-Software-Design-Team5\db_model\mysql.py
+__pycache__/
+db_model/mysql.py
+mysql.py

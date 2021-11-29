@@ -25,7 +25,7 @@ app.secret_key="secret_key" #보안을 높이려면 바뀌는 코드를 넣어�
 
 
 
-app.register_blueprint(site_blueprint.school,url_prefix="/")
+app.register_blueprint(site_blueprint.senior_school,url_prefix="/")
 login_manager=LoginManager()
 login_manager.init_app(app) #flask객체를 로그인매니저에 등록.
 login_manager.session_protection="strong" #세션코드를 보다 복잡하게 만드는 코드
