@@ -20,7 +20,7 @@ os.environ['OAUTHLIB_INSECURE_TRANSPORT']='1'
 
 app= Flask(__name__,static_url_path="/static")
 #서버 생성, static_url_path설정을 통해 static폴더에서 html의 필요한 폴더를 가져오라고 함.
-CORS(app, resources={r"/*": {"origins": "*"}})#CORS: 자바스크립트를 사용한 api 등의 리소스 호출시 동일 출처(같은 호스트네임)가 아니더라도 정상적으로 사용 가능하도록 도와주는 방법
+CORS(app, resources={r"/api/*": {"origins": "*"}})#CORS: 자바스크립트를 사용한 api 등의 리소스 호출시 동일 출처(같은 호스트네임)가 아니더라도 정상적으로 사용 가능하도록 도와주는 방법
 
 app.secret_key="secret_key" #보안을 높이려면 바뀌는 코드를 넣어야하지만 그럴 경우 껏다키면 세션이 사라짐.
 
