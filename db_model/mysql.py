@@ -3,7 +3,7 @@ from sqlalchemy import create_engine,text
 db = {
     'user' : '',
     'passwd':'',
-    'database' : 'itschool4senior',
+    'database' : 'school',
     'charset' : 'utf8',
     'host' : 'localhost' ,
     'port':3306 

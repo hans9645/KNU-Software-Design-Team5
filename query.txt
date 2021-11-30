@@ -5,13 +5,10 @@ CREATE TABLE IF NOT EXISTS `user_info`(
     user_id VARCHAR(50) NOT NULL,
     password VARCHAR(100) NOT NULL,
     user_name CHAR(15) NOT NULL,
-    phone_number VARCHAR(45) ,
-    belong VARCHAR(45) NOT NULL,
     create_at DATETIME NOT NULL DEFAULT now(),
     PRIMARY KEY(id)
 );
-//유저 가입 시 정보를 받는데 체크박스 부분 수정 필요.
-//비밀번호 재확인 일치 문제는 자바스크립트로 프론트에서 해결해야하는지.
+
 
  
 CREATE TABLE IF NOT EXISTS `accounts` (
