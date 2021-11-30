@@ -1,26 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+  <meta name="generator" content="Hugo 0.82.0">
     <title>Document</title>
+
 </head>
 <body>
-    <a href="/home"><h1>홈으로</h1></a>
-    <a href="/bullet"><h1>게시판으로</h1></a>
+    <div class="position-relative overflow-hidden p-3 p-md-0 m-md-3 text-center bg-light">
+        <div class="col-md-5 p-lg-5 mx-auto my-5">
+        
+          <h1 class="display-4 fw-normal">스터디 룸</h1>
+          <p class="lead fw-normal">원하는 방에 들어가서 함께 학습해보세요.</p>
+          <!--
+          <a class="btn btn-outline-secondary" href="#">Coming soon</a>
+          -->
+        </div>
+        <!--
+        <div class="product-device shadow-sm d-none d-md-block"></div>
+        <div class="product-device product-device-2 shadow-sm d-none d-md-block"></div>
+        -->
+      </div>
+      <hr>
+    <div>
+    <h3>링크</h3>
+    <a href="{{ 'https://jitsi.o-r.kr/' + title }}"> 이동하기</a>
+    </div>
+    
 
-    <h1>제목</h1>
+    <h3>제목</h3>
     {{title}}<br>
-    <h2>내용</h2>
+    <hr>
+    <h3>내용</h3>
     <div>{{row}} <br> </div>
+    <hr>
       
       <form action="/delete_article" method="GET">
-       <input type="text" name="{{ title }}" style="display: none;" /><br><br>
+       <input type="text" name="{{ title }}" style="display: none;" />
         
-        <input type="submit" value="업로드" /><br>
-        <a href="/delete_article/{{title}}"><h1>삭제</h1></a>
+        <a href="/delete_article/{{title}}"><h5>삭제하기</h5></a>
 
     </form>
+
+    <button onclick="window.location.href='/bullet'">뒤로가기</button>
+    <button onclick="window.location.href='/home'">홈으로</button>
+
 </body>
 </html>
