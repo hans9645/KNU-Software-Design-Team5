@@ -7,7 +7,7 @@
   <meta name="description" content="">
   <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
   <meta name="generator" content="Hugo 0.82.0">
-  <title>비대면 교육 플랫폼 </title>
+  <title>시니어를 위한 IT 교육 </title>
 
   <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/carousel/">
 
@@ -36,18 +36,31 @@
 </head>
 
 <body>
-  <a href="/home">
-    <h1>홈으로</h1>
-  </a>
+
+  <div class="position-relative overflow-hidden p-3 p-md-0 m-md-3 text-center bg-light">
+    <div class="col-md-5 p-lg-5 mx-auto my-5">
+    
+      <h1 class="display-4 fw-normal">스터디 룸</h1>
+      <p class="lead fw-normal">원하는 방에 들어가서 함께 학습해보세요.</p>
+      <!--
+      <a class="btn btn-outline-secondary" href="#">Coming soon</a>
+      -->
+    </div>
+    <!--
+    <div class="product-device shadow-sm d-none d-md-block"></div>
+    <div class="product-device product-device-2 shadow-sm d-none d-md-block"></div>
+    -->
+  </div>
 
   <table class="table table-striped table-hover">
     <thead>
       <tr>
         <th scope="col">번호</th>
+        <th scope="col">바로 입장하기</th>
         <th scope="col">제목</th>
         <th scope="col">이름</th>
         <th scope="col">날짜</th>
-        <th scope="col">조회수</th>
+        <!--<th scope="col">   </th>-->
       </tr>
     </thead>
     <tbody>
@@ -55,10 +68,11 @@
       {% for row in rows %}
       <tr>
         <td>{{loop.index}}</td>
+        <td><a href="{{ 'https://jitsi.o-r.kr/' + row[2] }}"> {{row[2]}}</a></td>
         <td><a href="{{ url_for('senior_school.article_page',title= row[2], context = row[3]) }}"> {{row[2]}}</a></td>
         <td>{{row[1]}}</td>
         <td>{{row[4]}}</td>
-        <td>{{row[4]}}</td>
+        <!--<td>{{row[4]}}</td>-->
       </tr>
       {% endfor %}
       {% else %}
@@ -67,6 +81,9 @@
     </tbody>
   </table>
   <a href="{{ url_for('senior_school.write_article') }}" class="btn btn-primary">질문 등록하기</a>
+  <br><br>  
+  <a href="/home" class="btn btn-primary">홈으로</a>
+
 </body>
 
 </html>

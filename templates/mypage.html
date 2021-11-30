@@ -1,103 +1,157 @@
 <!DOCTYPE html>
-<html>
-<head>
-<style>
-table, th, td {
-    border: 1px solid ;
-    border-collapse: collapse;
-    border-color : gray;
-    text-align: center;
-
-}
-th, td {
-    padding: 10px;
-}
-th {
-    text-align: center;
-}
-
-
-</style>
+<html lang="ko">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>마이페이지</title>
 </head>
+
 <body>
-<div style="margin: 40px;">
-  <h1>OO의 My Page</h1>
-</div>
-
-<div>
-  <h3><a href="/hw_submit">과제 제출</a> </h3>
-  <h3><a href="/hw_register">과제 등록</a> </h3>
-</div>
-
-<div>
-  <h3><a href="/subj_subscribe">수업 생성</a> </h3>
-  <h3><a href="/subj_register">강의 신청</a> </h3>
-</div>
-
-<div  style="position: absolute; left: 500px; top: 250px;">
- <table style="width:800px ; height:500px ; border-radius : 16px">
-  <caption><font size="4em" color = "#808283">OO의 p-edu 수업 시간표</font></caption>
- 
-   <tr bgcolor = #fcfcfc>
-     <th> </th>
-     <th><font color = "gray">Mon</font></th>
-     <th><font color = "gray">Tue</font></th>
-     <th><font color = "gray">Wed</font></th>
-     <th><font color = "gray">Thu</font></th>
-     <th><font color = "gray">Fri</font></th>
-   </tr>
-   <tr bgcolor=#fcfcfc>
-     <th><font color = "gray">1</font></th>
-     <td style = "background : #f9e1f9  ;"><font color = "#555557"><a href="https://jitsi.o-r.kr/subj1">일정 1</a></font></td>
-     <td> </td>
-     <td style = "background : #d4e8bf ;"rowspan="2"><font color = "#555557">과목 2</font></td>
-     <td style = "background : #bfdae8 ;" rowspan="2"><font color = "#555557">과목 3</font></td>
-     <td style = "background : #bfc3e8;" rowspan="2"><font color = "#555557">과목 4</font></td>
-   </tr>
-     <tr bgcolor=#fcfcfc>
-     <th><font color = "gray">2</font></th>
-     <td> </td>
-     <td> </td>
-   </tr>
-     <tr bgcolor=#fcfcfc>
-     <th><font color = "gray">3</font></th>
-     <td> </td>
-     <td> </td>
-     <td style = "background : #bfc3e8  ;" rowspan="2"><font color = "#555557">과목 4</font></td>
-     <td style = "background : #e8bfcc;" rowspan="2"><font color = "#555557">과목 5</font></td>
-     <td> </td>
-   </tr>
-    <tr bgcolor=#fcfcfc>
-     <th><font color = "gray">4</font></th>
-     <td> </td>
-     <td> </td>
-     <td> </td>
-   </tr>
-    <tr bgcolor=#fcfcfc>
-     <th><font color = "gray">5</font></th>
-     <td style = "background : #dad9a9  ;" rowspan="2"><font color = "#555557">과목 6</font></td>
-     <td style = "background : #e9e9dc  ;" rowspan="4"><font color = "#555557">과목 7</font></td>
-     <td style = "background : #e7dce9  ;" rowspan="4"><font color = "#555557">과목 8</font></td>
-     <td style = "background : #bce5dd   ;" rowspan="4"><font color = "#555557">과목 9</font></td>
-     <td> </td>
-   </tr>
-    <tr bgcolor=#fcfcfc>
-     <th><font color = "gray">6</font></th>
-     <td> </td>
-   </tr>
-    <tr bgcolor=#fcfcfc>
-     <th><font color = "gray">7</font></th>
-     <td> </td>
-     <td> </td>
-   </tr>
-   <tr bgcolor=#fcfcfc>
-    <th><font color = "gray">8</font></th>
-    <td style = "background : #f0d0d0;"><font color = "#555557">과목 10</font></td>
-    <td> </td>
-   </tr>
-
- </table>
-</div>
-
+    <nav>
+        <h1>마이페이지</h1>
+        {% if current_user.user_id != null %}
+        <h3 class="nav-link active">
+            {{current_user.user_id}}님 반갑습니다.
+        </h3>
+        <span class="spring"></span>
+        <h3 class="nav-item">
+            <a class="nav-link active" href="/logout">로그아웃</a>
+        </h3>
+        {% else %}
+        <h3 class="nav-item">
+            <a class="nav-link active" href="/login_register">로그인/회원가입</a>
+        </h3>
+        {% endif %}
+    </nav>
+    <div>
+        <section>
+            <div>
+                <img src="../static/brand/mp_user.png">
+                <div>
+                    <span>아이디</span>
+                    <span>{{current_user.user_id}}</span>
+                </div>
+            </div>
+            <div>
+                <img src="../static/brand/mp_padlock.png">
+                <div>
+                    <span>비밀번호</span>
+                    <span>{{current_user.password}}</span>
+                </div>
+            </div>
+            <div>
+                <img src="../static/brand/mp_phone-call.png">
+                <div>
+                    <span>전화번호</span>
+                    <span>{{current_user.phone_number}}</span>
+                </div>
+            </div>
+            <div>
+                <img src="../static/brand/mp_school.png">
+                <div>
+                    <span>소속</span>
+                    <span>{{current_user.belong}}</span>
+                </div>
+            </div>
+            <div>
+                <img src="../static/brand/mp_clock.png">
+                <div>
+                    <span>가입 일</span>
+                    <span>{{current_user.create_at}}</span>
+                </div>
+            </div>
+        </section>
+    </div>
 </body>
+
+<style>
+    a {
+        text-decoration: none;
+        color: black;
+    }
+
+    body {
+        margin: 0;
+        padding: 0;
+        width: 100vw;
+        height: 100vh;
+        background: linear-gradient( rgba(255,255,255,0.8987744756105567) 0%, rgba(35,84,141,0.3) 100%);
+        background-repeat: no-repeat;
+        background-size: cover;
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+        align-items: stretch;
+    }
+
+    body > nav {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        background: #FFFFFF44;
+    }
+
+    body > nav > h1 {
+        font-size: 2rem;
+        color: #9dbbed;
+        font-weight: 700;
+    }
+
+    body > nav > .spring {
+        flex: 1;
+    }
+
+    body > nav > h1, h2, h3 {
+        margin: 1rem;
+    }
+
+    body > nav  a {
+        font-size: 1.5rem;
+        color: #6d9eedaa;
+        font-weight: 600;
+    }
+
+    body > nav  a:hover {
+        font-size: 1.7rem;
+        color: #6d9eed;
+        font-weight: 800;
+    }
+
+    body > div {
+        display: flex;
+        flex-direction: row;
+    }
+
+    section > div {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        margin: 3rem;
+    }
+
+    section > div > div {
+        display: flex;
+        flex-direction: column;
+        margin-left: 3rem;
+        align-items: center;
+        justify-content: center;
+    }
+
+    section > div > div > span:first-child {
+        font-size: 2rem;
+        color: #9dbbed;
+    }
+
+    section > div > div > span:last-child {
+        font-size: 1rem;
+        font-weight: 700;
+        margin: 1rem;
+    }
+
+    section > div > img {
+        width: 5rem;
+    }
+</style>
 </html>
